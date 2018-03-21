@@ -1,0 +1,11 @@
+
+<h2>The product name is: {{ product.productName }} </h2>
+
+<h2>The product type is: {{ product.productType }}</h2>
+
+<ul>
+    {% for batch in product.batch_set.all %}
+        <li>Associated batch, with number: {{ batch.batchNumber }}</li>
+    {% endfor %}
+</ul>
+

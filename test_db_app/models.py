@@ -12,6 +12,9 @@ class Product(models.Model):
 class Batch(models.Model):
     batchNumber = models.IntegerField()
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return str(self.batchNumber)
 
 class MachineUsers(models.Model):
     userName = models.CharField(max_length=255)

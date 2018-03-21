@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.template import loader
-from django.http import HttpResponse
+from django.http import Http404
 from test_db_app.models import Product
 
 
@@ -11,7 +11,13 @@ def index(request):
 
 
 def detail(request, prodcutId):
-    return HttpResponse("<h2>The Id of the prodcut is: " + prodcutId +"</h2>")
+    try:
+        product = Product.objects.get(pk=prodcutId)
+        context = {"product":product}
+    except Product.DoesNotExist:
+        raise Http404("Product does not exist")
+
+    return render(request, "products/product.html", context)
 
 
 
