@@ -1,0 +1,10 @@
+
+{% if all_products %}
+    <ul>
+        {% for product in all_products %}
+        <li><a href="/test_db_app/{{ product.id }}">{{ product.productName }}:</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>There are no products available.</h3>
+{% endif %}
