@@ -2,7 +2,7 @@
 {% if all_products %}
     <ul>
         {% for product in all_products %}
-        <li><a href="/test_db_app/{{ product.id }}">{{ product.productName }}</a></li>
+        <li><a href="{% url 'test_db_app:detail' product.pk %}">{{ product.productName }}</a></li>
         {% endfor %}
     </ul>
 {% else %}

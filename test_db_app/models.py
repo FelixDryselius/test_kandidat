@@ -12,6 +12,7 @@ class Product(models.Model):
 class Batch(models.Model):
     batchNumber = models.IntegerField()
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    is_favorite = models.BooleanField(default =False)
     
     def __str__(self):
         return str(self.batchNumber)
