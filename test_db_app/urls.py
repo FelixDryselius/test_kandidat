@@ -8,5 +8,6 @@ app_name = 'test_db_app'
 
 urlpatterns = [
     url(r'^$', views.index, name='index' ),
-    path("<str:prodcutId>", views.detail, name="detail"),
+    path("<str:productId>", views.detail, name="detail"),
+    path("<str:productId>/favorite", views.favorite, name="favorite"),
 ]

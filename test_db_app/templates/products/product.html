@@ -3,9 +3,28 @@
 
 <h2>The product type is: {{ product.productType }}</h2>
 
+{% if error_message %}
+    <p><strong>{{ error_message }} </strong></p>
+{% endif %}
+
+<form action="{% url 'test_db_app:favorite' product.pk %}" method="POST">
+    {% csrf_token %}
+    {% for batch in product.batch_set.all %}
+        <input type="radio" id="batch{{ forloop.counter }}" name="batch" value="{{ batch.pk }}">
+        <label for="batch{{ forloop.counter }}">
+            {{ batch.batchNumber }}
+            {% if batch.is_favorite %}
+                <strong>selected as FAVORITE</strong>
+            {% endif %}
+        </label><br>
+    {% endfor %}
+    <input type="submit" value="Favorite">
+</form>
+
+<!--
 <ul>
     {% for batch in product.batch_set.all %}
         <li>Associated batch, with number: {{ batch.batchNumber }}</li>
     {% endfor %}
 </ul>
-
+-->
